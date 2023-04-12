@@ -1,0 +1,59 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace ApplicationConfig.id_library
+    compileSdk ApplicationConfig.compileSdkVersion
+
+    defaultConfig {
+        minSdk ApplicationConfig.minSdk
+
+        testInstrumentationRunner Testing.androidJUnitRunner
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion Compose.composeCompilerVersion
+        kotlinCompilerVersion Compose.composeCompilerVersion
+
+    }
+}
+
+dependencies {
+    implementation(Compose.composeAnimation)
+    implementation(Compose.composeBom)
+    implementation platform(Compose.composeBom)
+    implementation(Compose.runtime)
+    implementation(Compose.ui)
+    implementation(Compose.material)
+    implementation(Compose.material3)
+    implementation(Compose.uiTooling)
+    implementation(Compose.foundation)
+    implementation(Compose.compiler)
+    implementation(Compose.constraintLayout)
+    implementation(Compose.materialIcons)
+    implementation(Compose.materialIconsExtended)
+    implementation(Compose.activity)
+    implementation(Compose.navigation)
+    implementation(ImageLibraries.coil)
+}

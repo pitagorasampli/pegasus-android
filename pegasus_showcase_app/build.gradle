@@ -1,0 +1,78 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+
+    namespace ApplicationConfig.id_showcase_app
+    compileSdk ApplicationConfig.compileSdkVersion
+
+    defaultConfig {
+        applicationId ApplicationConfig.id_showcase_app
+        minSdk ApplicationConfig.minSdk
+        targetSdk ApplicationConfig.compileSdkVersion
+        versionCode Releases.versionCode
+        versionName Releases.versionName
+
+        testInstrumentationRunner Testing.androidJUnitRunner
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            minifyEnabled false
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion Compose.composeCompilerVersion
+        kotlinCompilerVersion Compose.composeCompilerVersion
+
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
+
+    implementation(project(PegasusAndroid.uiLibrary))
+    implementation(Compose.composeAnimation)
+    implementation(Compose.composeBom)
+    implementation platform(Compose.composeBom)
+    implementation(Compose.runtime)
+    implementation(Compose.ui)
+    implementation(Compose.material)
+    implementation(Compose.material3)
+    implementation(Compose.uiTooling)
+    implementation(Compose.foundation)
+    implementation(Compose.compiler)
+    implementation(Compose.constraintLayout)
+    implementation(Compose.materialIcons)
+    implementation(Compose.materialIconsExtended)
+    implementation(Compose.activity)
+    implementation(Compose.navigation)
+    implementation(ImageLibraries.coil)
+}
