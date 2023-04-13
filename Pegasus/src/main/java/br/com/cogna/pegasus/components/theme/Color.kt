@@ -1,7 +1,12 @@
 package br.com.cogna.pegasus.components.theme
-import androidx.compose.ui.graphics.Color
 
+import androidx.compose.ui.graphics.Color
+import com.airbnb.android.showkase.annotation.ShowkaseColor
+
+@ShowkaseColor(name = "Primary Light Color", group = "Material Design")
 val md_theme_light_primary = Color(0xFF285EA7)
+
+@ShowkaseColor(name = "On Primary Light Color", group = "Material Design")
 val md_theme_light_onPrimary = Color(0xFFFFFFFF)
 val md_theme_light_primaryContainer = Color(0xFFD6E3FF)
 val md_theme_light_onPrimaryContainer = Color(0xFF001B3D)
