@@ -1,5 +1,6 @@
 package br.com.cogna.pegasus.components.button
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -12,8 +13,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -27,18 +28,19 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import br.com.cogna.pegasus.components.theme.PegasusTheme
 
 @Composable
 fun PegasusActionButton(
     text: String,
     modifier: Modifier = Modifier,
-    backgroundColor: Color? = Color.Blue,
+    backgroundColor: Color? = MaterialTheme.colorScheme.primary,
     enabled: Boolean = true,
     description: String? = null,
     onClick: () -> Unit = { }
 ) {
 
-    val elementsColor = Color.White
+    val elementsColor = MaterialTheme.colorScheme.onPrimary
 
     val backgroundButtonColor = backgroundColor ?: Color.Transparent
 
@@ -48,14 +50,18 @@ fun PegasusActionButton(
         ),
         elevation = ButtonDefaults.elevation(1.dp),
         contentPadding = PaddingValues(),
-        shape = RoundedCornerShape(20),
+        shape = MaterialTheme.shapes.medium,
         onClick = { if (enabled) onClick() }) {
 
         val backgroundModifier = if (enabled) {
-            if (backgroundColor != null) Modifier.background(backgroundColor) else Modifier.background(
-                color = Color.Gray
-            )
-        } else Modifier.background(color = Color.Gray)
+            if (backgroundColor != null) {
+                Modifier.background(backgroundColor)
+            } else {
+                Modifier.background(color = MaterialTheme.colorScheme.outline)
+            }
+        } else {
+            Modifier.background(color = MaterialTheme.colorScheme.outline)
+        }
 
         Box(
             modifier = backgroundModifier
@@ -85,7 +91,7 @@ fun PegasusActionButton(
 fun RowScope.AppButtonText(
     description: String?,
     text: String,
-    elementsColor: Color,
+    elementsColor: Color = MaterialTheme.colorScheme.onPrimary,
     fontWeight: FontWeight = FontWeight.Bold
 ) {
     val commonTextModifier = Modifier.Companion
@@ -97,7 +103,7 @@ fun RowScope.AppButtonText(
         }
 
     Text(
-        text = text, style = MaterialTheme.typography.body1.copy(
+        text = text, style = MaterialTheme.typography.bodyLarge.copy(
             color = elementsColor, fontWeight = fontWeight
         ), modifier = commonTextModifier
     )
@@ -107,18 +113,47 @@ fun RowScope.AppButtonText(
 @Composable
 @Preview
 fun PegasusActionButton_Preview() {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(color = Color.White)
-    ) {
-        Box(modifier = Modifier.padding(16.dp)) {
-            var enabled by remember {
-                mutableStateOf(true)
+    PegasusTheme {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(color = MaterialTheme.colorScheme.surface)
+        ) {
+            Box(modifier = Modifier.padding(16.dp)) {
+                var enabled by remember {
+                    mutableStateOf(true)
+                }
+                PegasusActionButton(
+                    text = "This is a button, click me",
+                    enabled = enabled,
+                    onClick = {
+                        enabled = !enabled
+                    })
             }
-            PegasusActionButton(text = "This is a button, click me", enabled = enabled, onClick = {
-                enabled = !enabled
-            })
+        }
+    }
+}
+
+@Composable
+@Preview(uiMode = UI_MODE_NIGHT_YES)
+fun PegasusActionButton_Dark_Preview() {
+    PegasusTheme {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(color = MaterialTheme.colorScheme.surface)
+        ) {
+            Box(modifier = Modifier.padding(16.dp)) {
+                var enabled by remember {
+                    mutableStateOf(true)
+                }
+                PegasusActionButton(
+                    text = "This is a button, click me",
+                    enabled = enabled,
+                    onClick = {
+                        enabled = !enabled
+                    })
+            }
         }
     }
 }

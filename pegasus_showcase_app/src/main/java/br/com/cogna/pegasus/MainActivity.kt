@@ -12,7 +12,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import br.com.cogna.pegasus.components.button.PegasusActionButton
-import br.com.cogna.pegasus.ui.theme.PegasusTheme
+import br.com.cogna.pegasus.components.theme.PegasusTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +24,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Box(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
+                    Box(modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp)) {
                         PegasusActionButton(text = "Pegasus button")
                     }
                 }
