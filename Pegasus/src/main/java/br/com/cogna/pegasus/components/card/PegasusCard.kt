@@ -1,5 +1,6 @@
 package br.com.cogna.pegasus.components.card
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Card
@@ -55,3 +56,35 @@ fun PegasusPrimaryCard_Preview() {
     }
 }
 
+
+@Composable
+@Preview(uiMode = UI_MODE_NIGHT_YES)
+@ShowkaseComposable(name = "Pegasus Primary Card", group = "Cards", defaultStyle = true)
+fun PegasusPrimaryCard_Dark_Preview() {
+    PegasusTheme {
+        PegasusPrimaryCard {
+            Column(modifier = Modifier.padding(16.dp)) {
+                Text(
+                    style = MaterialTheme.typography.bodyLarge.copy(
+                        color = MaterialTheme.colorScheme.onSurface, fontWeight = FontWeight.Bold
+                    ), text = "Title"
+                )
+
+                Text(
+                    modifier = Modifier.padding(top = 16.dp),
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                        color = MaterialTheme.colorScheme.onSurface
+                    ), text = "Subtitle"
+                )
+                Text(
+                    modifier = Modifier.padding(top = 8.dp),
+                    style = MaterialTheme.typography.bodySmall.copy(
+                        color = MaterialTheme.colorScheme.onSurface
+                    ), text = "Description of a long text"
+                )
+
+
+            }
+        }
+    }
+}
