@@ -14,7 +14,6 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 
-
 @Composable
 fun PegasusTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),

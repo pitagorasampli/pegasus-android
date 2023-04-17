@@ -5,6 +5,7 @@ import com.airbnb.android.showkase.annotation.ShowkaseColor
 
 @ShowkaseColor(name = "Primary Light Color", group = "Material Design")
 val md_theme_light_primary = Color(0xFF285EA7)
+val md_theme_light_primary2 = Color(0xFF31A200)
 
 @ShowkaseColor(name = "On Primary Light Color", group = "Material Design")
 val md_theme_light_onPrimary = Color(0xFFFFFFFF)

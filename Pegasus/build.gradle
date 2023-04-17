@@ -2,6 +2,7 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'org.jetbrains.kotlin.kapt'
+    id 'maven-publish'
 
 }
 
@@ -37,6 +38,24 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion Compose.composeCompilerVersion
         kotlinCompilerVersion Compose.composeCompilerVersion
+
+    }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = ApplicationConfig.id_library
+            artifactId = 'library'
+            version = Releases.versionName
+
+
+            pom {
+                name = 'Pegasus Android Library'
+                description = 'Cogna UI Components Library for Android'
+            }
+
+        }
 
     }
 }
