@@ -1,9 +1,18 @@
 package br.com.cogna.pegasus.components.theme
-import androidx.compose.ui.graphics.Color
 
+import androidx.compose.ui.graphics.Color
+import com.airbnb.android.showkase.annotation.ShowkaseColor
+
+@ShowkaseColor(name = "Primary Light Color", group = "Material Design")
 val md_theme_light_primary = Color(0xFF285EA7)
+
+@ShowkaseColor(name = "On Primary Light Color", group = "Material Design")
 val md_theme_light_onPrimary = Color(0xFFFFFFFF)
+
+@ShowkaseColor(name = "Primary Container Light Color", group = "Material Design")
 val md_theme_light_primaryContainer = Color(0xFFD6E3FF)
+
+@ShowkaseColor(name = "On Primary Container Light Color", group = "Material Design")
 val md_theme_light_onPrimaryContainer = Color(0xFF001B3D)
 val md_theme_light_secondary = Color(0xFF555F71)
 val md_theme_light_onSecondary = Color(0xFFFFFFFF)
@@ -32,7 +41,10 @@ val md_theme_light_surfaceTint = Color(0xFF285EA7)
 val md_theme_light_outlineVariant = Color(0xFFC4C6CF)
 val md_theme_light_scrim = Color(0xFF000000)
 
+@ShowkaseColor(name = "Primary Light Dark Color", group = "Material Design")
 val md_theme_dark_primary = Color(0xFFA9C7FF)
+
+@ShowkaseColor(name = "On Primary Dark Color", group = "Material Design")
 val md_theme_dark_onPrimary = Color(0xFF003063)
 val md_theme_dark_primaryContainer = Color(0xFF00468C)
 val md_theme_dark_onPrimaryContainer = Color(0xFFD6E3FF)
