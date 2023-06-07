@@ -77,6 +77,7 @@ dependencies {
     implementation(Compose.activity)
     implementation(Compose.navigation)
     implementation(ImageLibraries.coil)
+   // implementation(PegasusDesignSystem.designSystem)
 
     implementation "com.airbnb.android:showkase:1.0.0-beta18"
     kapt "com.airbnb.android:showkase-processor:1.0.0-beta18"
